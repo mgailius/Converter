@@ -1,0 +1,125 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #5433ff, #20bdff);
+}
+
+.illustration {
+    height: 80px;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 32px;
+    color: #fff;
+}
+
+form, .currencies {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    width: 95%;
+}
+
+form {margin-top: 60px;}
+
+form input {
+    width: 200px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 10px 20px;
+}
+
+.currencies {margin-top: 30px;}
+
+.currentCurrency {
+    width: 200px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    transition: 500ms;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+}
+
+.currencyContainer {
+    position: relative;
+}
+
+.currencyContainer::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 14px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.currencySelection {
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    max-height: 0px;
+    transition: 400ms;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 3px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.currentCurrency:focus + .currencySelection {
+    max-height: 240px; 
+}
+
+.currentCurrency:focus {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.currency, .selectedCurrency {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selectedCurrency {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+}
+
+.currency:hover {
+    background-color: #eeeeee;
+}
+
+.currency img, .selectedCurrency img{
+    height: 20px;
+    margin: 0 10px 0 12px;
+}
