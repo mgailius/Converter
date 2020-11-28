@@ -1,1 +1,1 @@
-Currency converter (euro - dollar - pound)
+Currency converter Euro - Dollar - Pound
