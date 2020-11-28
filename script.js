@@ -4,64 +4,65 @@ class Currency {
     constructor(name, icon, rate) {
         this.name = name;
         this.icon = icon;
-        this.rate = rate;
     }
 }
 
 const UI = {
     form: document.getElementsByClassName('.form'),
-    currencySelection: document.getElementsByClassName('currencySelection'),
-    currentCurrency: document.getElementsByClassName('currentCurrency'),
-    selectedCurrency: document.getElementsByClassName('selectedCurrency')
+    input: document.getElementsByTagName('input'),
+    currency: document.getElementsByClassName('currency')
 }
 
 function initCurrencies() {
-    currencies.push(new Currency('Euro', 'images/flags/eu.svg', 1));
-    currencies.push(new Currency('Dollar', 'images/flags/usa.svg', 1.19));
-    currencies.push(new Currency('Pound', 'images/flags/uk.svg', 0.89));
-    currencies.push(new Currency('Yuan', 'images/flags/china.svg', 7.83));
+    currencies.push(new Currency('Euro', 'images/flags/eu.svg'));
+    currencies.push(new Currency('Dollar', 'images/flags/usa.svg'));
+    currencies.push(new Currency('Pound', 'images/flags/uk.svg'));
 }
 
 function displayCurrencies() {
-    for (let i = 0; i < UI.currencySelection.length; i++) {
-        currencies.forEach(currency => {
-            UI.currencySelection[i].innerHTML += `
-            <div onClick="selectCurrency(this)" class="currency ${i}">
-                <img src="${currency.icon}">
-                <p>${currency.name}</p>
-            </div>`
-        });
-        UI.currentCurrency[i].innerHTML = `
-        <div class="selectedCurrency ${i}">
+    for (let i = 0; i < UI.currency.length; i++) {
+        UI.currency[i].innerHTML = `
             <img src="${currencies[i].icon}">
             <p>${currencies[i].name}</p>
-        </div>`
+        `
     }
 }
 
-function selectCurrency(element) {
-    for (let i = 0; i < UI.selectedCurrency.length; i++) {
-        if(UI.selectedCurrency[i].classList[1] == element.classList[1]) {
-            UI.selectedCurrency[i].innerHTML = element.innerHTML;
-        }
+//functionality
+
+UI.input[0].addEventListener("focus", () => {UI.input[0].addEventListener("keyup", () => {convertFromEuro();});});
+UI.input[1].addEventListener("focus", () => {UI.input[1].addEventListener("keyup", () => {convertFromDollar();});});
+UI.input[2].addEventListener("focus", () => {UI.input[2].addEventListener("keyup", () => {convertFromPound();});});
+
+function convertFromEuro() {
+    if (!UI.input[0].value) {
+        UI.input[1].value = "";
+        UI.input[2].value = "";
+    } else {
+        UI.input[1].value = (UI.input[0].value * 1.20).toFixed(2);
+        UI.input[2].value = (UI.input[0].value * 0.90).toFixed(2);
+    } 
+}
+
+function convertFromDollar() {
+    if (!UI.input[1].value) {
+        UI.input[0].value = "";
+        UI.input[2].value = "";
+    } else {
+        UI.input[0].value = (UI.input[1].value * 0.84).toFixed(2);
+        UI.input[2].value = (UI.input[1].value * 0.75).toFixed(2);
     }
 }
 
-function updateConversion() {
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < currencies.length; j++) {
-            if(UI.selectedCurrency[i].children[1].innerHTML == currencies[j].name) {
-                //konversijos logika ?
-                //debug
-                console.log(currencies[j].name)
-                console.log(currencies[j].rate)
-            }
-        }
+function convertFromPound() {
+    if (!UI.input[2].value) {
+        UI.input[1].value = "";
+        UI.input[0].value = "";
+    } else {
+        UI.input[0].value = (UI.input[2].value * 1.11).toFixed(2);
+        UI.input[1].value = (UI.input[2].value * 1.33).toFixed(2);
     }
 }
 
 initCurrencies();
 displayCurrencies();
-
-//debug
-document.addEventListener("keydown", updateConversion);

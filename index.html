@@ -6,12 +6,12 @@
     <title>Document</title>
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <img class="illustration" src="images/money.svg" alt="money">
+    <img class="illustration" src="images/illustration.svg" alt="money">
     <h1>Currency converter</h1>
     <form class="form">
         <input type="number">
@@ -19,18 +19,11 @@
         <input type="number">
     </form>
     <div class="currencies">
-        <div class="currencyContainer">
-            <button class="currentCurrency"></button>
-            <div class="currencySelection"></div>
-        </div>
-        <div class="currencyContainer">
-            <button class="currentCurrency"></button>
-            <div class="currencySelection"></div>
-        </div>
-        <div class="currencyContainer">
-            <button class="currentCurrency"></button>
-            <div class="currencySelection"></div>
-        </div>
+        <div class="currency"></div>
+        <div class="filler one">~</div>
+        <div class="currency"></div>
+        <div class="filler two">~</div>
+        <div class="currency"></div>
     </div>
 </body>
 </html>
