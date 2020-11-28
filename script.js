@@ -8,7 +8,6 @@ class Currency {
 }
 
 const UI = {
-    form: document.getElementsByClassName('.form'),
     input: document.getElementsByTagName('input'),
     currency: document.getElementsByClassName('currency')
 }
